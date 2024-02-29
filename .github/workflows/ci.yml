@@ -1,0 +1,16 @@
+on:
+  push:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Set output
+      id: output
+      run: |
+        python -c 'print("A=1"); print("B=2")' >> $GITHUB_OUTPUT
+
+    - name: Check output
+      run: |
+        echo "${{ steps.output.outputs.A }}"
+        echo "${{ steps.output.outputs.B }}"
